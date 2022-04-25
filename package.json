@@ -5,9 +5,9 @@
   "description": "Ferdi server to replace the default Franz server.",
   "main": "index.js",
   "engines": {
-    "node": "^16.14.2",
-    "npm": "^8.7.0",
-    "node-gyp": "^8.7.0"
+    "node": "16.14.2",
+    "npm": "8.7.0",
+    "node-gyp": "9.0.0"
   },
   "scripts": {
     "prepare": "husky install",
