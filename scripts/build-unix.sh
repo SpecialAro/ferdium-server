@@ -108,6 +108,12 @@ pnpm i && pnpm lint && pnpm reformat-files && pnpm package
 popd
 
 # -----------------------------------------------------------------------------
+printf "\n*************** Building themes ***************\n"
+pushd themes
+pnpm i && pnpm lint && pnpm reformat-files && pnpm package
+popd
+
+# -----------------------------------------------------------------------------
 # Now the meat.....
 pnpm i
 pnpm prepare

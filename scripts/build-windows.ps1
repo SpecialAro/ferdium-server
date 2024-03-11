@@ -126,6 +126,12 @@ pnpm i && pnpm lint && pnpm reformat-files && pnpm package
 Pop-Location
 
 # -----------------------------------------------------------------------------
+Write-Host "*************** Building themes ***************"
+Push-Location themes
+pnpm i && pnpm lint && pnpm reformat-files && pnpm package
+Pop-Location
+
+# -----------------------------------------------------------------------------
 # Now the meat.....
 & pnpm i
 & pnpm prepare

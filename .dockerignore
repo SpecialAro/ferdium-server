@@ -24,5 +24,8 @@ tmp
 # Ignore recipes folder (it is pulled in the image by git)
 recipes
 
+# Ignore themes folder (it is pulled in the image by git)
+themes
+
 # Ignore build folder
 build

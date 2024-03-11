@@ -44,6 +44,32 @@ pnpm i
 pnpm package
 cd ..
 
+if [ ! -d "/app/themes/.git" ]; # When we mount an existing volume (ferdium-recipes-vol:/app/recipes) if this is only /app/recipes it is always true
+then
+    echo '**** Generating themes for first run ****'
+    git clone --branch main https://github.com/specialaro/ferdium-themes themes
+else
+    echo '**** Updating themes ****'
+    chown -R root /app/themes # Fixes ownership problem when doing git pull -r
+    cd themes
+    git stash -u
+    git pull -r
+    git stash pop
+    cd ..
+fi
+
+cd themes
+git config --global --add safe.directory /app/themes
+EXPECTED_PNPM_VERSION=$(node -p 'require("./package.json").engines.pnpm')
+npm i -gf pnpm@$EXPECTED_PNPM_VERSION
+pnpm i
+pnpm package
+cd ..
+
+# Create symbolic link to /app/build/
+ln -sf /app/recipes /app/build/recipes
+ln -sf /app/themes /app/build/themes
+
 # Restore NODE_ENV
 NODE_ENV=$SAVE_NODE_ENV
 

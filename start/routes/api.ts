@@ -25,6 +25,10 @@ Route.group(() => {
   Route.get('recipe', 'ServiceController.list').middleware('auth:jwt');
   Route.get('icon/:id', 'ServiceController.icon');
 
+  // Themes store
+  Route.get('themes', 'ThemesController.list');
+  Route.get('themes/download/:themeId', 'ThemesController.download');
+
   // Recipe store
   Route.get('recipes', 'RecipeController.list');
   Route.get('recipes/search', 'RecipeController.search');
